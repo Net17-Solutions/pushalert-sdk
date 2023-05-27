@@ -27,7 +27,7 @@ const sdk = new SDK(apiKey);
 ```
 
 ### Sending Notifications
-#### Send to All Subscribers
+#### 1. Send to All Subscribers
 To send a notification to all subscribers, use the sendToAll method:
 ```bash
 const options = {
@@ -45,7 +45,7 @@ sdk.sendToAll(options)
     console.error('Error sending notification:', error);
   });
 ```
-#### Send to a Single Subscriber
+#### 2. Send to a Single Subscriber
 To send a notification to a single subscriber, use the sendToSingle method:
 ```bash
 const options = {
@@ -64,7 +64,7 @@ sdk.sendToSingle(options)
     console.error('Error sending notification:', error);
   });
 ```
-#### Send to Multiple Subscribers
+#### 3. Send to Multiple Subscribers
 To send a notification to multiple subscribers, use the sendToMultiple method:
 
 ```bash
