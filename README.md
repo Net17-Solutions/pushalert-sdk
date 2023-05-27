@@ -1,4 +1,4 @@
-# PushAlert.co Unofficial SDK
+# PushAlert.co SDK 
 
 This package provides an unofficial SDK for sending notifications using the PushAlert.co service. It allows users to send notifications to their subscribers using the PushAlert.co API.
 
