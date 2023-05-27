@@ -41,17 +41,18 @@ export default class SDK {
     }
   }
   async sendToMultiple(options: SendToMultipleInterfaceOptions) {
+    const subscribers = JSON.stringify(options.subscribers);
     try {
       const response = await fetch({
         url: constants.sendUrl,
-        body: options,
+        body: { ...options, subscribers: subscribers as unknown as string[] },
         apiKey: _apiKey,
       });
       return response.data;
     } catch (error) {
       console.error(
         "PUSH ALERT ERROR, Reason: ",
-        error.message,        
+        error.message,
         error.response.statusText
       );
     }

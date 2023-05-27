@@ -12,6 +12,8 @@ export interface bodyOptions {
         title: string;
         url: string;
     }];
+    subscribers?: string[];
+    subscriber?: string;
 }
 export interface axiosOptions {
     url: string;
@@ -22,5 +24,5 @@ export interface SendToSingleInterfaceOptions extends bodyOptions {
     subscriber: string;
 }
 export interface SendToMultipleInterfaceOptions extends bodyOptions {
-    subscribers?: any;
+    subscribers?: string[];
 }

@@ -49,10 +49,11 @@ class SDK {
     }
     sendToMultiple(options) {
         return __awaiter(this, void 0, void 0, function* () {
+            const subscribers = JSON.stringify(options.subscribers);
             try {
                 const response = yield (0, client_1.fetch)({
                     url: constants_1.constants.sendUrl,
-                    body: options,
+                    body: Object.assign(Object.assign({}, options), { subscribers: subscribers }),
                     apiKey: _apiKey,
                 });
                 return response.data;

@@ -18,10 +18,7 @@ console.log("process.env.API_KEY", process.env.API_KEY);
 
 sdk
   .sendToMultiple({
-    subscribers: JSON.stringify([
-      "pn8El0t5tSPvFWNpFtW/gXw==",
-      "pl+EM9QBF8q0QMQ4vPO4Y+Q==",
-    ]),
+    subscribers: ["pn8El0t5tSPvFWNpFtW/gXw==", "pl+EM9QBF8q0QMQ4vPO4Y+Q=="],
     title: "Multiple from backend",
     message: "Multiple from backend",
     url: "https://www.pushalert.co/",
