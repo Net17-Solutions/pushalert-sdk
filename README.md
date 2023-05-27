@@ -26,8 +26,8 @@ const apiKey = 'YOUR_API_KEY';
 const sdk = new SDK(apiKey);
 ```
 
-#### Sending Notifications
-Send to All Subscribers
+### Sending Notifications
+#### Send to All Subscribers
 To send a notification to all subscribers, use the sendToAll method:
 ```bash
 const options = {
@@ -38,6 +38,45 @@ const options = {
 };
 
 sdk.sendToAll(options)
+  .then(response => {
+    console.log('Notification sent successfully:', response);
+  })
+  .catch(error => {
+    console.error('Error sending notification:', error);
+  });
+```
+#### Send to a Single Subscriber
+To send a notification to a single subscriber, use the sendToSingle method:
+```bash
+const options = {
+  title: 'Your Title',
+  message: 'Your Message',
+  icon: 'http://yourwebsite.com/icon.png',
+  url: 'https://yourwebsite.com',
+  subscriber: 'SUBSCRIBER_ID',
+};
+
+sdk.sendToSingle(options)
+  .then(response => {
+    console.log('Notification sent successfully:', response);
+  })
+  .catch(error => {
+    console.error('Error sending notification:', error);
+  });
+```
+#### Send to Multiple Subscribers
+To send a notification to multiple subscribers, use the sendToMultiple method:
+
+```bash
+const options = {
+  title: 'Your Title',
+  message: 'Your Message',
+  icon: 'http://yourwebsite.com/icon.png',
+  url: 'https://yourwebsite.com',
+  subscribers: ['SUBSCRIBER_ID1', 'SUBSCRIBER_ID2'],
+};
+
+sdk.sendToMultiple(options)
   .then(response => {
     console.log('Notification sent successfully:', response);
   })
