@@ -22,7 +22,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/your-repo"
+    "url": "https://github.com/Inder-pal-singh/pushalert-sdk"
   },
   "devDependencies": {
     "@types/node": "^20.2.4",
