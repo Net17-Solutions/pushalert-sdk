@@ -27,6 +27,13 @@ const sdk = new SDK(apiKey);
 ```
 
 ### Sending Notifications
+Currently supported APIs:
+
+1. sendToSingle: This API allows you to send a notification to a single subscriber. 
+
+2. sendToAll: With this API, you can broadcast a notification to all subscribers. 
+
+3. sendToMultiple: This API allows you to send notifications to multiple subscribers simultaneously. 
 #### 1. Send to All Subscribers
 To send a notification to all subscribers, use the sendToAll method:
 ```bash
