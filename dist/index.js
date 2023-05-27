@@ -4,3 +4,4 @@ function hello() {
     console.log('hello world');
 }
 exports.default = hello;
+//# sourceMappingURL=index.js.map

@@ -1,12 +1,8 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const dotenv_1 = __importDefault(require("dotenv"));
-dotenv_1.default.config();
-const sdk_1 = __importDefault(require("./sdk"));
-const sdk = new sdk_1.default(process.env.API_KEY);
+import dotenv from "dotenv";
+dotenv.config();
+import Sdk from "./sdk";
+
+const sdk = new Sdk(process.env.API_KEY as string);
 // sdk.sendToAll({
 //   title: 'Test from backend',
 //   message: 'Test from backend',
@@ -19,20 +15,20 @@ const sdk = new sdk_1.default(process.env.API_KEY);
 //     subscriber: 'pl+EM9QBF8q0QMQ4vPO4Y+Q==',
 // });
 console.log("process.env.API_KEY", process.env.API_KEY);
+
 sdk
-    .sendToMultiple({
+  .sendToMultiple({
     subscribers: JSON.stringify([
-        "pn8El0t5tSPvFWNpFtW/gXw==",
-        "pl+EM9QBF8q0QMQ4vPO4Y+Q==",
+      "pn8El0t5tSPvFWNpFtW/gXw==",
+      "pl+EM9QBF8q0QMQ4vPO4Y+Q==",
     ]),
     title: "Multiple from backend",
     message: "Multiple from backend",
     url: "https://www.pushalert.co/",
-})
-    .then((res) => {
+  })
+  .then((res) => {
     console.log(res);
-})
-    .catch((err) => {
+  })
+  .catch((err) => {
     console.log(err);
-});
-//# sourceMappingURL=demo.js.map
+  });

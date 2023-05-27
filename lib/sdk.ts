@@ -1,11 +1,13 @@
 import { constants } from "./constants";
-import { bodyOptions } from "./interfaces";
+import {
+  SendToMultipleInterfaceOptions,
+  SendToSingleInterfaceOptions,
+  bodyOptions,
+} from "./interfaces";
 import { fetch } from "./client";
 
 let _apiKey: string;
-interface SendToSingleInterfaceOptions extends bodyOptions {
-    subscriber: string;
-  }
+
 export default class SDK {
   constructor(apiKey: string) {
     _apiKey = apiKey;
@@ -14,26 +16,44 @@ export default class SDK {
   async sendToAll(options: bodyOptions) {
     try {
       const response = await fetch({
-        url: constants.sendToAll,
+        url: constants.sendUrl,
         body: options,
         apiKey: _apiKey,
       });
-      response.data;
+      return response.data;
+    } catch (error) {
+      console.log("PUSH ALERT ERROR: ", error.message);
+    }
+  }
+
+  async sendToSingle(options: SendToSingleInterfaceOptions) {
+    try {
+      const response = await fetch({
+        url: constants.sendUrl,
+        body: options,
+        apiKey: _apiKey,
+      });
+      console.log(response);
+
+      return response.data;
     } catch (error) {
       console.log("SOME ERROR", error);
     }
   }
-  
-  async sendToSingle(options:  SendToSingleInterfaceOptions ) {
+  async sendToMultiple(options: SendToMultipleInterfaceOptions) {
     try {
       const response = await fetch({
-        url: constants.sendToAll,
+        url: constants.sendUrl,
         body: options,
         apiKey: _apiKey,
       });
-      response.data;
+      return response.data;
     } catch (error) {
-      console.log("SOME ERROR", error);
+      console.error(
+        "PUSH ALERT ERROR, Reason: ",
+        error.message,        
+        error.response.statusText
+      );
     }
   }
 }
