@@ -2,7 +2,7 @@
 
 This package provides an unofficial SDK for sending notifications using the PushAlert.co service. It allows users to send notifications to their subscribers using the PushAlert.co API.
 
-**Note: This SDK is not officially supported or endorsed by PushAlert.co. Use it at your own risk.**
+**Disclaimer: This SDK is an unofficial implementation for interacting with the PushAlert.co service. While efforts have been made to ensure its functionality and reliability, please note that it does not have official support or endorsement from PushAlert.co.**
 
 ## Installation
 
