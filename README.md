@@ -10,4 +10,11 @@ Install the package using npm:
 
 ```bash
 npm install pushalert-sdk
+```
 
+### Usage
+Import the SDK class from the package
+
+```bash
+import SDK from 'pushalert-sdk';
+```
