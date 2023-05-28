@@ -9,57 +9,155 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const constants_1 = require("./constants");
-const client_1 = require("./client");
-let _apiKey;
+const constants_1 = require("./helpers/constants");
+const client_1 = require("./helpers/client");
+/**
+ * Represents an SDK for sending push notifications.
+ */
 class SDK {
+    /**
+     * Initializes the SDK with an API key.
+     * @param {string} apiKey - The API key for the SDK.
+     */
     constructor(apiKey) {
-        _apiKey = apiKey;
+        this._apiKey = apiKey;
+        this._sendUrl = constants_1.constants.sendUrl;
     }
+    /**
+     * Sends a push notification to all subscribers.
+     * @param {bodyOptions} options - The options for the push notification.
+     * @returns {Promise<any>} - A promise that resolves with the response data.
+     */
     sendToAll(options) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const response = yield (0, client_1.fetch)({
-                    url: constants_1.constants.sendUrl,
-                    body: options,
-                    apiKey: _apiKey,
+                const response = yield (0, client_1.post)({
+                    options: {
+                        url: this._sendUrl,
+                        body: options,
+                        apiKey: this._apiKey,
+                    },
                 });
                 return response.data;
             }
             catch (error) {
-                console.log("PUSH ALERT ERROR: ", error.message);
+                console.error("Error occurred:", error.message);
+                throw error;
             }
         });
     }
+    /**
+     * Sends a push notification to a single subscriber.
+     * @param {SendToSingleInterfaceOptions} options - The options for the push notification.
+     * @returns {Promise<any>} - A promise that resolves with the response data.
+     */
     sendToSingle(options) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const response = yield (0, client_1.fetch)({
-                    url: constants_1.constants.sendUrl,
-                    body: options,
-                    apiKey: _apiKey,
+                const response = yield (0, client_1.post)({
+                    options: {
+                        url: this._sendUrl,
+                        body: options,
+                        apiKey: this._apiKey,
+                    },
                 });
                 console.log(response);
                 return response.data;
             }
             catch (error) {
-                console.log("SOME ERROR", error);
+                console.error("Error occurred:", error.message);
+                throw error;
             }
         });
     }
+    /**
+     * Sends a push notification to multiple subscribers.
+     * @param {SendToMultipleInterfaceOptions} options - The options for the push notification.
+     * @returns {Promise<any>} - A promise that resolves with the response data.
+     */
     sendToMultiple(options) {
         return __awaiter(this, void 0, void 0, function* () {
             const subscribers = JSON.stringify(options.subscribers);
             try {
-                const response = yield (0, client_1.fetch)({
-                    url: constants_1.constants.sendUrl,
-                    body: Object.assign(Object.assign({}, options), { subscribers: subscribers }),
-                    apiKey: _apiKey,
+                const response = yield (0, client_1.post)({
+                    options: {
+                        url: this._sendUrl,
+                        body: Object.assign(Object.assign({}, options), { subscribers: subscribers }),
+                        apiKey: this._apiKey,
+                    },
                 });
                 return response.data;
             }
             catch (error) {
-                console.error("PUSH ALERT ERROR, Reason: ", error.message, error.response.statusText);
+                console.error("Error occurred:", error.message);
+                throw error;
+            }
+        });
+    }
+    /**
+     * Sends a push notification with custom attributes.
+     * @param {SendWithCustomAttributesInterfaceOptions} options - The options for sending the push notification with custom attributes.
+     * @returns {Promise<object>} - A promise that resolves with the response data.
+     */
+    sendWithCustomAttributes(options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield (0, client_1.post)({
+                    options: {
+                        url: this._sendUrl,
+                        body: options,
+                        apiKey: this._apiKey,
+                    },
+                });
+                return response.data;
+            }
+            catch (error) {
+                console.error("Error occurred:", error.message);
+                throw error;
+            }
+        });
+    }
+    /**
+     * Retrieves push notification statistics for a specific notification.
+     * @param {IdParamInterfaceOptions} options - The options for retrieving push notification statistics.
+     * @returns {Promise<object>} - A promise that resolves with the response data.
+     */
+    getStats(options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield (0, client_1.get)({
+                    options: {
+                        url: `${constants_1.constants.statsUrl}/${options.id}`,
+                        apiKey: this._apiKey,
+                    },
+                });
+                return response.data;
+            }
+            catch (error) {
+                console.error("Error occurred:", error.message);
+                throw error;
+            }
+        });
+    }
+    /**
+     * Deletes a scheduled push notification.
+     * @param {IdParamInterfaceOptions} options - The options for deleting a scheduled notification.
+     * @returns {Promise<object>} - A promise that resolves with the response data.
+     */
+    deleteNotification(options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield (0, client_1.post)({
+                    options: {
+                        url: `${constants_1.constants.deleteScheduledNotification}/${options.id}`,
+                        apiKey: this._apiKey,
+                    },
+                });
+                return response.data;
+            }
+            catch (error) {
+                console.error("Error occurred:", error.message);
+                throw error;
             }
         });
     }

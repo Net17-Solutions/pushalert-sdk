@@ -10,4 +10,8 @@ export declare const constants: {
      * The URL for retrieving push notification statistics.
      */
     statsUrl: string;
+    /**
+     * The URL for deleting a push notification.
+     */
+    deleteScheduledNotification: string;
 };

@@ -12,19 +12,29 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fetch = void 0;
+exports.get = exports.post = void 0;
 const axios_1 = __importDefault(require("axios"));
-function fetch(options) {
+function post({ options }) {
     return __awaiter(this, void 0, void 0, function* () {
         const data = options.body;
-        console.log("data", data);
-        return (yield axios_1.default.post(options.url, data, {
+        return yield axios_1.default.post(options.url, data, {
             headers: {
                 Authorization: `api_key=${options.apiKey}`,
                 "Content-Type": "application/x-www-form-urlencoded",
             },
-        }));
+        });
     });
 }
-exports.fetch = fetch;
+exports.post = post;
+function get({ options }) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return yield axios_1.default.get(options.url, {
+            headers: {
+                Authorization: `api_key=${options.apiKey}`,
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+        });
+    });
+}
+exports.get = get;
 //# sourceMappingURL=client.js.map

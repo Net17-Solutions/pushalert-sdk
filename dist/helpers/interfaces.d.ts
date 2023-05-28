@@ -94,3 +94,10 @@ export interface SendWithCustomAttributesInterfaceOptions extends bodyOptions {
      */
     url_attr?: string;
 }
+export interface IdParamInterfaceOptions {
+    /**
+     * Id of the notification.
+     * @example 119998682
+     */
+    id: number;
+}
