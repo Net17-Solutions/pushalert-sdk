@@ -61,7 +61,6 @@ class SDK {
                         apiKey: this._apiKey,
                     },
                 });
-                console.log(response);
                 return response.data;
             }
             catch (error) {

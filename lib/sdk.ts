@@ -58,8 +58,7 @@ export default class SDK {
           body: options,
           apiKey: this._apiKey,
         },
-      });
-      console.log(response);
+      });      
 
       return response.data;
     } catch (error) {
