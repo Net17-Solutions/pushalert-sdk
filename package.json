@@ -16,13 +16,12 @@
     "Push Notification for Website",
     "pushalert-sdk",
     "npm pushalert"
-
   ],
-  "author": "Inder Pal Singh",
+  "author": "Net17 Solutions",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Inder-pal-singh/pushalert-sdk"
+    "url": "https://github.com/Net-Solutions/pushalert-sdk"
   },
   "devDependencies": {
     "@types/node": "^20.2.4",
